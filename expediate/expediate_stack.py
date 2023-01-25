@@ -109,14 +109,16 @@ class ExpediateStack(Stack):
             filter_pattern = _logs.FilterPattern.all_terms('Task','timed','out')
         )
 
-        rule = _events.Rule(
-            self, 'rule',
+### RULES ###
+
+        ec2 = _events.Rule(
+            self, 'ec2',
             event_pattern = _events.EventPattern(
                 detail_type = ['AWS API Call via CloudTrail'],
-                source = ['aws.cloudtrail'],
+                source = ['aws.ec2'],
                 detail = {
                     "eventSource": [
-                        "cloudtrail.amazonaws.com"
+                        "ec2.amazonaws.com"
                     ],
                     "eventName": [
                         "DeleteVpc"
@@ -125,7 +127,7 @@ class ExpediateStack(Stack):
             )
         )
 
-        rule.add_target(
+        ec2.add_target(
             _targets.LambdaFunction(
                 alert
             )
