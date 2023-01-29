@@ -560,3 +560,208 @@ class ExpediateStack(Stack):
                 alert
             )
         )
+
+        organizations = _events.Rule(
+            self, 'organizations',
+            event_pattern = _events.EventPattern(
+                detail_type = ['AWS API Call via CloudTrail'],
+                source = ['aws.organizations'],
+                detail = {
+                    "eventSource": [
+                        "organizations.amazonaws.com"
+                    ],
+                    "eventName": [
+                        "LeaveOrganization"
+                    ]
+                }
+            )
+        )
+
+        organizations.add_target(
+            _targets.LambdaFunction(
+                alert
+            )
+        )
+
+        rds = _events.Rule(
+            self, 'rds',
+            event_pattern = _events.EventPattern(
+                detail_type = ['AWS API Call via CloudTrail'],
+                source = ['aws.rds'],
+                detail = {
+                    "eventSource": [
+                        "rds.amazonaws.com"
+                    ],
+                    "eventName": [
+                        "ModifyDBInstance",
+                        "RestoreDBInstanceFromDBSnapshot"
+                    ]
+                }
+            )
+        )
+
+        rds.add_target(
+            _targets.LambdaFunction(
+                alert
+            )
+        )
+
+        rolesanywhere = _events.Rule(
+            self, 'rolesanywhere',
+            event_pattern = _events.EventPattern(
+                detail_type = ['AWS API Call via CloudTrail'],
+                source = ['aws.rolesanywhere'],
+                detail = {
+                    "eventSource": [
+                        "rolesanywhere.amazonaws.com"
+                    ],
+                    "eventName": [
+                        "CreateProfile",
+                        "CreateTrustAnchor"
+                    ]
+                }
+            )
+        )
+
+        rolesanywhere.add_target(
+            _targets.LambdaFunction(
+                alert
+            )
+        )
+
+        route53 = _events.Rule(
+            self, 'route53',
+            event_pattern = _events.EventPattern(
+                detail_type = ['AWS API Call via CloudTrail'],
+                source = ['aws.route53'],
+                detail = {
+                    "eventSource": [
+                        "route53.amazonaws.com"
+                    ],
+                    "eventName": [
+                        "DisableDomainTransferLock",
+                        "TransferDomainToAnotherAwsAccount"
+                    ]
+                }
+            )
+        )
+
+        route53.add_target(
+            _targets.LambdaFunction(
+                alert
+            )
+        )
+
+        s3 = _events.Rule(
+            self, 's3',
+            event_pattern = _events.EventPattern(
+                detail_type = ['AWS API Call via CloudTrail'],
+                source = ['aws.s3'],
+                detail = {
+                    "eventSource": [
+                        "s3.amazonaws.com"
+                    ],
+                    "eventName": [
+                        "PutBucketLogging",
+                        "PutBucketWebsite",
+                        "PutEncryptionConfiguration",
+                        "PutLifecycleConfiguration",
+                        "PutReplicationConfiguration",
+                        "ReplicateObject",
+                        "RestoreObject"
+                    ]
+                }
+            )
+        )
+
+        s3.add_target(
+            _targets.LambdaFunction(
+                alert
+            )
+        )
+
+        securityhub = _events.Rule(
+            self, 'securityhub',
+            event_pattern = _events.EventPattern(
+                detail_type = ['AWS API Call via CloudTrail'],
+                source = ['aws.securityhub'],
+                detail = {
+                    "eventSource": [
+                        "securityhub.amazonaws.com"
+                    ],
+                    "eventName": [
+                        "BatchUpdateFindings",
+                        "DeleteInsight",
+                        "UpdateFindings",
+                        "UpdateInsight"
+                    ]
+                }
+            )
+        )
+
+        securityhub.add_target(
+            _targets.LambdaFunction(
+                alert
+            )
+        )
+
+        sso = _events.Rule(
+            self, 'sso',
+            event_pattern = _events.EventPattern(
+                detail_type = ['AWS API Call via CloudTrail'],
+                source = ['aws.sso'],
+                detail = {
+                    "eventSource": [
+                        "sso.amazonaws.com"
+                    ],
+                    "eventName": [
+                        "AttachCustomerManagedPolicyReferenceToPermissionSet",
+                        "AttachManagedPolicyToPermissionSet",
+                        "CreateAccountAssignment",
+                        "CreateInstanceAccessControlAttributeConfiguration",
+                        "CreatePermissionSet",
+                        "DeleteAccountAssignment",
+                        "DeleteInlinePolicyFromPermissionSet",
+                        "DeleteInstanceAccessControlAttributeConfiguration",
+                        "DeletePermissionsBoundaryFromPermissionSet",
+                        "DeletePermissionSet",
+                        "DetachCustomerManagedPolicyReferenceFromPermissionSet",
+                        "DetachManagedPolicyFromPermissionSet",
+                        "ProvisionPermissionSet",
+                        "PutInlinePolicyToPermissionSet",
+                        "PutPermissionsBoundaryToPermissionSet",
+                        "UpdateInstanceAccessControlAttributeConfiguration",
+                        "UpdatePermissionSet"
+                    ]
+                }
+            )
+        )
+
+        sso.add_target(
+            _targets.LambdaFunction(
+                alert
+            )
+        )
+
+        sts = _events.Rule(
+            self, 'sts',
+            event_pattern = _events.EventPattern(
+                detail_type = ['AWS API Call via CloudTrail'],
+                source = ['aws.sts'],
+                detail = {
+                    "eventSource": [
+                        "sts.amazonaws.com"
+                    ],
+                    "eventName": [
+                        "GetFederationToken",
+                        "GetSessionToken"
+                    ]
+                }
+            )
+        )
+
+        sts.add_target(
+            _targets.LambdaFunction(
+                alert
+            )
+        )
