@@ -239,6 +239,7 @@ class ExpediateStack(Stack):
                         "CreateImage",
                         "CreateInstanceExportTask",
                         "CreateKeyPair",
+                        "CreateVpc",
                         "DeleteFlowLogs",
                         "DeleteVpc",
                         "DescribeInstanceAttribute",
