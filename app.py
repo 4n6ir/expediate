@@ -19,6 +19,6 @@ ExpediateStack(
 )
 
 cdk.Tags.of(app).add('Alias','ALL')
-cdk.Tags.of(app).add('GitHub','https://github.com/jblukach/expediate.git')
+cdk.Tags.of(app).add('GitHub','https://github.com/4n6ir/expediate.git')
 
 app.synth()
