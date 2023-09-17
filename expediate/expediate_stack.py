@@ -77,7 +77,7 @@ class ExpediateStack(Stack):
 
         layer = _lambda.LayerVersion.from_layer_version_arn(
             self, 'layer',
-            layer_version_arn = 'arn:aws:lambda:'+region+':070176467818:layer:getpublicip:5'
+            layer_version_arn = 'arn:aws:lambda:'+region+':070176467818:layer:getpublicip:9'
         )
 
 ### ERROR ###
@@ -126,13 +126,13 @@ class ExpediateStack(Stack):
             handler = 'alert.handler',
             code = _lambda.Code.from_asset('alert'),
             architecture = _lambda.Architecture.ARM_64,
-            runtime = _lambda.Runtime.PYTHON_3_10,
-            timeout = Duration.seconds(900),
+            runtime = _lambda.Runtime.PYTHON_3_11,
+            timeout = Duration.seconds(30),
             environment = dict(
-                ACCOUNT = account,
+                AWS_ACCOUNT = account,
                 REGION = region
             ),
-            memory_size = 256,
+            memory_size = 128,
             role = role,
             layers = [
                 layer
@@ -142,7 +142,7 @@ class ExpediateStack(Stack):
         alertlogs = _logs.LogGroup(
             self, 'alertlogs',
             log_group_name = '/aws/lambda/'+alert.function_name,
-            retention = _logs.RetentionDays.ONE_DAY,
+            retention = _logs.RetentionDays.ONE_MONTH,
             removal_policy = RemovalPolicy.DESTROY
         )
 
@@ -283,6 +283,8 @@ class ExpediateStack(Stack):
                         "DeleteVpc",
                         "DescribeInstanceAttribute",
                         "DisableEbsEncryptionByDefault",
+                        "DisableImageBlockPublicAccess",
+                        "EnableImageBlockPublicAccess",
                         "GetPasswordData",
                         "ModifyInstanceAttribute",
                         "ModifySnapshotAttribute",

@@ -8,10 +8,32 @@ from expediate.expediate_stack import ExpediateStack
 app = cdk.App()
 
 ExpediateStack(
-    app, 'ExpediateStack',
+    app, 'ExpediateStackUSE1',
     env = cdk.Environment(
         account = os.getenv('CDK_DEFAULT_ACCOUNT'),
-        region = os.getenv('CDK_DEFAULT_REGION')
+        region = 'us-east-1'
+    ),
+    synthesizer = cdk.DefaultStackSynthesizer(
+        qualifier = '4n6ir'
+    )
+)
+
+ExpediateStack(
+    app, 'ExpediateStackUSE2',
+    env = cdk.Environment(
+        account = os.getenv('CDK_DEFAULT_ACCOUNT'),
+        region = 'us-east-2'
+    ),
+    synthesizer = cdk.DefaultStackSynthesizer(
+        qualifier = '4n6ir'
+    )
+)
+
+ExpediateStack(
+    app, 'ExpediateStackUSW2',
+    env = cdk.Environment(
+        account = os.getenv('CDK_DEFAULT_ACCOUNT'),
+        region = 'us-west-2'
     ),
     synthesizer = cdk.DefaultStackSynthesizer(
         qualifier = '4n6ir'

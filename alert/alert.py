@@ -7,7 +7,7 @@ def handler(event, context):
 
     print(event['detail']['eventName'])
 
-    account = os.environ['ACCOUNT']
+    account = os.environ['AWS_ACCOUNT']
     region = os.environ['REGION']
 
     now = datetime.now(timezone.utc).isoformat().replace('+00:00','Z')
