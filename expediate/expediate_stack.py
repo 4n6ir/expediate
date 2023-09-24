@@ -127,12 +127,12 @@ class ExpediateStack(Stack):
             code = _lambda.Code.from_asset('alert'),
             architecture = _lambda.Architecture.ARM_64,
             runtime = _lambda.Runtime.PYTHON_3_11,
-            timeout = Duration.seconds(30),
+            timeout = Duration.seconds(900),
             environment = dict(
                 AWS_ACCOUNT = account,
                 REGION = region
             ),
-            memory_size = 128,
+            memory_size = 512,
             role = role,
             layers = [
                 layer
