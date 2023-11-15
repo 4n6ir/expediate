@@ -53,10 +53,18 @@ Time matters when bubbling up Cloud Trail events that require action.
  - CreateImage
  - CreateInstanceExportTask
  - CreateKeyPair
+ - CreateVpc
  - DeleteFlowLogs
  - DeleteVpc
  - DescribeInstanceAttribute
  - DisableEbsEncryptionByDefault
+ - DisableImageBlockPublicAccess
+ - DisableSerialConsoleAccess
+ - DisableSnapshotBlockPublicAccess
+ - EnableEbsEncryptionByDefault
+ - EnableImageBlockPublicAccess
+ - EnableSerialConsoleAccess
+ - EnableSnapshotBlockPublicAccess
  - GetPasswordData
  - ModifyInstanceAttribute
  - ModifySnapshotAttribute
@@ -222,6 +230,7 @@ Time matters when bubbling up Cloud Trail events that require action.
 <summary>s3.amazonaws.com</summary>
 
  - PutBucketLogging
+ - PutBucketPublicAccessBlock
  - PutBucketWebsite
  - PutEncryptionConfiguration
  - PutLifecycleConfiguration
