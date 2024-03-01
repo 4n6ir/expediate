@@ -49,5 +49,5 @@ def handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': json.dumps('Expediate Alert')
+        'body': json.dumps('Expediate Alert!')
     }
